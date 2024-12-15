@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment for Saman Dastgheib</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <!-- Header of the page with three links -->
+    <header class="bg-light py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <img src="img/trans_bg.png" alt="Company Logo" width="150" height="150" />
+        </div>
+        <div class="d-flex justify-content-center">
+          <h1 class="display-4" style="font-weight: bold; font-style: italic">
+            ANIPIXEL
+          </h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </nav>
+      </div>
+    </header>
+      <main class="container my-5">
+        <script>
+          for (let id = 1; id <= 6; id++) {
+            fetch(`http://localhost:3000/v1/actors/${id}`)
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById(`card-img${id}`).src = data.image;
+                document.getElementById(`card-title${id}`).textContent = data.name;
+                document.getElementById(`card-text${id}`).textContent = data.biography;
+              }).catch(error => {
+                console.error(`Error fetching data for actor with id ${id}:`, error);
+              });
+          }
+        </script>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            <script>
+              for (let id = 1; id <= 6; id++) {
+                document.write(
+                  `<div class="col">
+                    <a href="#" class="text-decoration-none">
+                      <div class="card h-100">
+                        <img src="img/${id}.jpg" id = "card-img${id}" class="card-img-top" alt="Placeholder Image">
+                        <div class="card-body">
+                          <h5 class="card-title" id = "card-title${id}"> A Neon Warrior's Gaze</h5>
+                          <p class="card-text" id = "card-text${id}"> For a futuristic anime character with a high-tech background and neon lighting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>`
+                );
+              }
+            </script>
+            
+        </div>
+  </main>
+    <!-- Footer of the page with some information -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="logo">
+              <img src="img/trans_bg.png" alt="Company Logo" width="150" height="150" />
+            </div>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-4">
+            <div>
+              <p>Address: Praterstraße 1, Wien, Austria</p>
+              <p>Phone: (43) 123-7890</p>
+              <p>Email: anipixel@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
