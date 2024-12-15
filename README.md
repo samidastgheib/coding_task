@@ -6,7 +6,3 @@ node app.js
 ```
 
 After this, the app will start serving on port 3000. You can access the web application at this URL: [http://localhost:3000/](http://localhost:3000/)
-
- -------------------------------------------------
-
-kindly please find the optoin part D in the Branch named "PartD" 
